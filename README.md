@@ -1,5 +1,5 @@
-nicify
-======
+nicify-lib
+==========
 
 [![Build Status](https://travis-ci.org/scravy/nicify.svg?branch=master)](https://travis-ci.org/scravy/nicify)
 
@@ -28,10 +28,20 @@ you would typically get:
 
 not so with nicify:
 
+```haskell
+    import Text.Nicify
 
+    data Z = A [Z] | B String | C (Z, Z)
+      deriving (Show)
+
+    main = putStrLn . nicify . show
+      $ A [B "one", B "two", A [ C (B "three", B "three prime"), B "woop woop" ]]
+```
+
+results in:
 
 ```
-    >>> runhaskell main.hs | nicify
+    >>> runhaskell main.hs -package nicify-lib
     A [
         B "one",
         B "two",
@@ -43,4 +53,5 @@ not so with nicify:
     ]
 ```
 
-
+`nicify` is also available as command line tool, see
+https://github.com/scravy/nicify
