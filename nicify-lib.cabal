@@ -1,14 +1,14 @@
 Name:           nicify-lib
-Version:        1.0
-Synopsis:       Pretty print the standard output of show for algebraic datatypes
-Description:    Pretty print the standard output of show for algebraic datatypes
+Version:        1.0.1
+Synopsis:       Pretty print the standard output of default `Show` instances.
+Description:    Pretty print the standard output of `show` for algebraic datatypes
                 
 License:        MIT
 License-File:   LICENSE
 Author:         Julian Fleischer
 Maintainer:     julian@scravy.de
 Build-Type:     Simple
-Cabal-Version:  >= 1.8
+Cabal-Version:  >= 1.10
 Category:       Text, Tools, Utilities
 Stability:      stable
 
