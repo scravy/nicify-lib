@@ -12,46 +12,46 @@ Example
 Given `main.hs`:
 
 ```haskell
-    data X = A [X] | B String | C (X, X)
-      deriving (Show)
+data X = A [X] | B String | C (X, X)
+  deriving (Show)
 
-    main = print $
-      A [B "one", B "two", A [ C (B "three", B "three prime"), B "woop woop" ]]
+main = print $
+  A [B "one", B "two", A [ C (B "three", B "three prime"), B "woop woop" ]]
 ```
 
 you would typically get:
 
 ```
-    >>> runhaskell main.hs 
-    A [B "one",B "two",A [C (B "three",B "three prime"),B "woop woop"]]
+>>> runhaskell main.hs 
+A [B "one",B "two",A [C (B "three",B "three prime"),B "woop woop"]]
 ```
 
 not so with nicify:
 
 ```haskell
-    import Text.Nicify
+import Text.Nicify
 
-    data Z = A [Z] | B String | C (Z, Z)
-      deriving (Show)
+data Z = A [Z] | B String | C (Z, Z)
+  deriving (Show)
 
-    main = putStrLn . nicify . show
-      $ A [B "one", B "two", A [ C (B "three", B "three prime"), B "woop woop" ]]
+main = putStrLn . nicify . show
+  $ A [B "one", B "two", A [ C (B "three", B "three prime"), B "woop woop" ]]
 ```
 
 results in:
 
 ```
-    >>> runhaskell main.hs -package nicify-lib
+>>> runhaskell main.hs -package nicify-lib
+A [
+    B "one",
+    B "two",
     A [
-        B "one",
-        B "two",
-        A [
-            C (B "three",
-            B "three prime"),
-            B "woop woop"
-        ]
+        C (B "three",
+        B "three prime"),
+        B "woop woop"
     ]
+]
 ```
 
 `nicify` is also available as command line tool, see
-https://github.com/scravy/nicify
+[`github.com/scravy/nicify`](https://github.com/scravy/nicify)
